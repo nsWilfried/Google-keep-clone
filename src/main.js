@@ -3,7 +3,6 @@ import App from './App.vue'
 import VueSweetalert2 from 'vue-sweetalert2';
 import './assets/main.css'
 import router from './router/index'
-import { firestorePlugin } from 'vuefire';
 
 
 const app = createApp(App)

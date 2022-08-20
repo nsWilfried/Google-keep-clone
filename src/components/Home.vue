@@ -21,12 +21,14 @@
     </div>
 </template>
 <script>
+import {supabase} from "../database/supabase"
 export default {
     data() {
         return {
             title: '', 
             message: '',
-            data: []
+            data: [], 
+            random: []
         }
     }, 
     methods: {
@@ -47,6 +49,15 @@ export default {
             this.data.splice(this.data.indexOf(this), 1)
         },
     }
+
+    , 
+    async created (){
+        let { data: tasks, error } =await  supabase.from("tasks").select("*")
+        console.log(tasks)
+    }
+
+
+
 }
 </script>
 <style lang="">
