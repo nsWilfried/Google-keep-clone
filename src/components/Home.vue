@@ -32,12 +32,11 @@ export default {
         }
     }, 
     methods: {
-        addElement() {
-           this.data.push({
-            title: this.title, 
-            message: this.message
-           }
-           )
+       async addElement() {
+            const {data, error} = await supabase.from('tasks').insert({
+                title: this.title,
+                task: this.message,
+            })
            this.clearInputs()
         }, 
 
@@ -53,7 +52,9 @@ export default {
     , 
     async created (){
         let { data: tasks, error } =await  supabase.from("tasks").select("*")
-        console.log(tasks)
+        this.data = tasks
+
+        console.log(this.data)
     }
 
 
