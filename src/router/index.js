@@ -1,7 +1,9 @@
 import Home from '../components/Home.vue'
+import Yokoso from "../components/Yokoso.vue"
 import { createRouter, createWebHistory } from 'vue-router'
 
 const routes = [
+ 
     {
         path: "/", 
         component: Home ,
