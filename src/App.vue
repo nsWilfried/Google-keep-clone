@@ -1,10 +1,9 @@
 <template>
-  <div>
-    <Home/>
-  </div>
+   <Home/>
+
 </template>
 <script>
-import Home from '@/components/Home.vue'
+import Home from './components/Home.vue'
 export default {
   components: {Home}, 
   data() {
