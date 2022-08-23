@@ -6,6 +6,10 @@ const routes = [
  
     {
         path: "/", 
+        component: Yokoso ,
+    }, 
+    {
+        path: "/home", 
         component: Home ,
     }
 ]
