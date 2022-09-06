@@ -4,7 +4,7 @@
             <div class="bg-white w-10 " style="width:300px; height:300px;">
             
                 <div>
-                    <form action="">
+                    <div>
                         <div>
                             <label for="username">Nom d'utilisateur</label>
                             <input v-model="username"  class="border border-1 text-center" type="text" name="username" id="">
@@ -19,9 +19,9 @@
                             <label for="password">Mot de passe</label>
                             <input v-model="password"  class="border border-1 text-center" type="text" name="password" id="">
                         </div>
-
+                        <button @click="signIn()">silskfsdsrjdfksdjflsdmkfjqsdfkjsdmflsdkfjsdlfkjsdmflkjsdlmfkqsjdmflsdkjfmsdlkfjqsmdlfk qjdflksdjfmsdl kf</button>
                         <button @click="registerUser()" type="submit">Inscrivez vous</button>
-                    </form>
+                    </div>
                 </div>
             </div>
         </div>
@@ -44,19 +44,27 @@ export default ({
 
     methods: {
         async registerUser(){
+            console.log("Mais qu'est ce qui se passe ? ")
             console.log(this.username, this.email, this.password)
 
             try{
                 const {user, error}= await supabase.auth.signUp({
                     email: this.email,
                     password: this.password
-                }, 
-                {
-                    data: {
-                    username: this.username,
-                }
-                }
-                )
+                })
+            }
+            catch(e){
+               
+               console.log(e)
+            }
+        }
+        , 
+        async signIn(){
+            try{
+                const {user, error}= await supabase.auth.signIn({
+                    email: "hello@gmail.com",
+                    password: "william cheaksepar"
+                })
             }
             catch(e){
                
