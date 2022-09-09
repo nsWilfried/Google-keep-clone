@@ -8,6 +8,7 @@ import './assets/main.css'
 // router
 import router from './router/index'
 
+// cookies
 // vueestic ui
 import { createVuestic } from 'vuestic-ui'
 import 'vuestic-ui/css'
@@ -17,6 +18,5 @@ const app = createApp(App)
 
 app.use(router)
 app.use(VueSweetalert2);
-
 app.use(createVuestic());
 app.mount('#app') 
