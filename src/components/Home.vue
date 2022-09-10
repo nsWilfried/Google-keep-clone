@@ -120,7 +120,12 @@ export default {
             return this.$swal("Succès", "Message ajouté", "success");
         }, 
         logOut(){
-            const {error} = supabase.auth.signOut()
+            const {error} = supabase.auth.signOut().then(response => {
+                if(response.error){
+                    return alert(response.error)
+                }
+                return this.$swal("Succès", "Utilisateur déonnecté").then(() => this.$router.push("/"))
+            })
         }
     },
     async created() {
