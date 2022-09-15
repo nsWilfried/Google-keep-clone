@@ -5,6 +5,9 @@
         <div class="w-ful p-5 bg-green- ">
             <div  class=" w-full flex flex-col  justify-center items-center  bg-yellow-">
                 <div class=" w-full  flex items-center flex-col h-auto" >
+                    <button @click="logOut">
+    se déconnter
+</button>
                     <!-- add message and title card-->
                     <va-card   style="padding: 0.75rem; height: auto;position: relative;" class="lg:w-96">
                         <div  class="row">

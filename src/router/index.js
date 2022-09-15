@@ -4,20 +4,38 @@ import Connexion from "../components/Connexion.vue"
 
 import { createRouter, createWebHistory } from 'vue-router'
 
+const isUserLogin =  () => {
+    const user = localStorage.getItem('supabase.auth.token')
+    console.log("je suis l'utilisateur", user)
+            if (user) {
+                return {
+                    path: "/home"
+                }
+            }
+        }
 const routes = [
  
     {
         path: "/", 
-        component: Yokoso ,
+        component: Yokoso,
+        beforeEnter:[isUserLogin]
     }, 
     {
         path: "/connexion", 
-        component: Connexion
+        component: Connexion, 
+        beforeEnter:[isUserLogin]
+
     }, 
 
     {
         path: "/home", 
-        component: Home ,
+        component: Home,
+        beforeEnter: () => {
+            const user = localStorage.getItem('supabase.auth.token')
+            if (!user) {
+                return "/connexion"
+            }
+        }
     }
 ]
 
