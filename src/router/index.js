@@ -6,7 +6,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const isUserLogin =  () => {
     const user = localStorage.getItem('supabase.auth.token')
-    console.log("je suis l'utilisateur", user)
+    // console.log("je suis l'utilisateur", user)
             if (user) {
                 return {
                     path: "/home"
