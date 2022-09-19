@@ -66,6 +66,10 @@
                 </va-card-title>
                 <va-card-content>{{ item.task }}</va-card-content>
               </div>
+
+              <!-- <div>
+                {{getUsername(item.user_id)}}
+              </div> -->
             </va-card>
           </div>
         </div>
@@ -136,9 +140,17 @@ export default {
       showCustomContent: false,
       showModal: false,
       user: JSON.parse(localStorage.getItem("supabase.auth.token")),
+      username: ""
     };
   },
   methods: {
+
+    // async getUsername(id){
+    //   const {data, error} = await supabase.from("users").select("username").eq("id", id)
+    //   this.username  = data
+    //   console.log("jesuis le nom d'utilisateur")
+    //   return this.username; 
+    // }, 
     // CRUD operations
     async addElement() {
       const { data, error } = await supabase.from("tasks").insert({
@@ -161,15 +173,18 @@ export default {
 
       this.clearInputs();
     },
+
+    // reset les inputs
     clearInputs() {
       (this.title = ""), (this.message = "");
     },
+
     // update element
     async updateItem(id, title, message) {
       const { data, error } = await supabase.from("tasks").update({
         title: title,
-        message: message,
-      });
+        task: message,
+      }).match({id:id});
 
       if (error) {
         this.$swal(
@@ -185,7 +200,7 @@ export default {
     },
 
     // delete element
-    async removeItem(id) {
+    async deleteElement(id) {
       const { data, error } = await supabase
         .from("tasks")
         .delete()
@@ -222,8 +237,12 @@ export default {
         title: "Modifier la note",
         html:
           `<input id="title" value="${element.title}" class="swal2-input">
-          <input id="task" value="${element.task}" class="swal2-input">`,
+          <textarea style="resize: none; width:300px; height:100px; padding:5px; " id="task" value="${element.task}" class="swal2-input">${element.task}</textarea>`,
         focusConfirm: false,
+        showDenyButton: true,
+        showConfirmButton: true, 
+        confirmButtonText: "Mettre à jour",
+        denyButtonText:"Supprimer" , 
         preConfirm: () => {
           const title = document.getElementById('title').value
           const task =  document.getElementById('task').value
@@ -231,9 +250,18 @@ export default {
             title, task
           }
         }
-      }).then((response) => {
-        console.log("je suis la réponse ", response)
-        this.updateItem(element.id, response.value.title, response.value.task)
+      }).then((result) => {
+        // console.log("je suis la réponse ", result)
+        if(result.isDenied){
+          // console.log("je suis le bouton de confirmation", result.value)
+          return this.deleteElement(element.id)
+        }else if ( result.isConfirmed){
+
+          // console.log("je suis tout les résulats", result.value)
+          return this.updateItem(element.id, result.value.title, result.value.task)
+
+        }
+
       })
     }, 
 
@@ -248,7 +276,7 @@ export default {
         if (response.error) {
           return alert(response.error);
         }
-        return this.$swal("Succès", "Utilisateur déonnecté").then(() =>
+        return this.$swal("Succès", "Utilisateur déconnecté").then(() =>
           this.$router.push("/")
         );
       });
@@ -257,7 +285,8 @@ export default {
   async created() {
     let { data: tasks, error } = await supabase.from("tasks").select("*");
     this.data = tasks;
-    console.log(this.data);
+    // console.log(this.data);
+    // this.getUsername(user.)
   },
 };
 </script>
