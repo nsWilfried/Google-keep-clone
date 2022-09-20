@@ -11,7 +11,8 @@ import router from './router/index'
 // cookies
 // vueestic ui
 import { createVuestic } from 'vuestic-ui'
-import 'vuestic-ui/css'
+import 'vuestic-ui/css'; 
+
 
 
 const app = createApp(App)

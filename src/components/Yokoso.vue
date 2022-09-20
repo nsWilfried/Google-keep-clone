@@ -1,34 +1,45 @@
 <template>
-    <div class="flex w-full h-screen " style="background-color: #1c1c1c;">
+    <div class="flex w-full h-screen justify-center items-center register" style="background-color: #1c1c1c;">
         <div class="w-full h-full flex justify-center items-center">
-            <div class="bg-white " style="width:300px; height:300px;">
+            <div class="bg- " style="width:300px; height:auto;">
 
-                <div class="flex justify-center items-center">
+                <div class="flex flex-col justify-center items-center">
                     <div>
-                        <div>
-                            <label for="username">Nom d'utilisateur</label>
-                            <input v-model="username" class="form__input border border-1 text-center" type="text"
-                                name="username" id="">
+                        <div class="flex flex-col w-full ">
+                            <div >
+                                <label  for="username" class="  flex justify-center items-center p-3">Nom d'utilisateur</label>
+                            </div>
+
+                            <input v-model="username" class="form__input border border-1 text-center" type="text" name="username" />
                         </div>
 
-                        <div>
-                            <label for="email">Email</label>
-                            <input v-model="email" class="form__input border border-1 text-center" type="email"
-                                name="email" id="">
+                        <div class="flex flex-col w-full ">
+                            <div >
+                                <label for="email" class="  flex justify-center items-center p-3">Email</label>
+                            </div>
+                            <input v-model="email" class="form__input border border-1 text-center" type="email" name="email"/>
                         </div>
 
-                        <div>
-                            <label for="password">Mot de passe</label>
-                            <input v-model="password" class="form__input border border-1 text-center" type="text"
-                                name="password" id="">
+                        <div class="flex flex-col w-full ">
+                            <div >
+                                <label for="password" class="  flex justify-center items-center p-3">Mot de passe</label>
+                            </div>
+                            <input v-model="password" class="form__input border border-1 text-center" type="password" name="password"/>
                         </div>
-                        <!-- <button @click="signIn()">Inscrivez  vous</button> -->
-                        <button @click="registerUser()" type="submit">Inscrivez vous</button>
+
+                        
                     </div>
+
+                    <routerLink to="/connexion" class="mt-2">
+                        <span class="text-white underline">Se connecter ?</span>
+                         </routerLink>
+                    <div class="w- bg- flex justify-center items-center p-3 ">
+                            <button @click="registerUser()" class="w-32 p-2 submit_button" type="submit">Inscrivez vous</button>
+
+                        </div>
                 </div>
             </div>
         </div>
-
     </div>
 </template>
 
@@ -99,11 +110,38 @@ export default ({
 </script>
 
 <style lang="css">
-.form__input {
-    width: 330px;
-    background: #f8f8f8;
-    border: 1px solid #f8f8f8;
-    padding: 6px;
 
+.form__input {
+    background-color: rgb(38, 48, 60);
+    outline: 0px;
+    border: 0px;
+    border-radius: 0.25rem;
+    width: 100%;
+    max-width: 500px;
+    margin: 0px auto;
+    padding: 1rem;
+    color: #EC7063;
+    font-family: "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
+    font-size: 2rem;
+    font-weight: 400;
+    text-align: center;
+
+}
+label{
+    color: white;
+    font-family: "Fira Code";
+    font-size: 1.2em;
+    text-transform: capitalize;
+}
+.submit_button {
+    font-family: "Fira Code", "Fira Mono", "Roboto Mono", "Lucida Console", Monaco, monospace;
+    text-transform: uppercase;
+    width:300px;
+    color: white ;
+    background-color: #EC7063;
+    /* border-radius: 5px; */
+    padding: 15px;
+    margin-top: 20px;
+    font-weight: bold;
 }
 </style>
