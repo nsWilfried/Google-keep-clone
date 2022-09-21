@@ -47,7 +47,7 @@
             <!-- add task button -->
             <div style="position: absolute; top: 90%; left: 0%">
               <va-button size="large" icon="logout" color="#EC7063" text-color="white" class="absolute"
-                v-on:click="addElement()" />
+                v-on:click="logOut()" />
             </div>
             <div style="position: absolute; top: 90%; left: 90%">
               <va-button size="large" icon="add" class="absolute" v-on:click="addElement()" />
