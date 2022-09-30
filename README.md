@@ -1,29 +1,62 @@
-# googleKeepClone
+<h1 align="center" id="title">Google Keep Clone</h1>
 
-This template should help get you started developing with Vue 3 in Vite.
+<p align="center"><img src="" alt="project-image"></p>
 
-## Recommended IDE Setup
+<p id="description">Il s'agit d'un clone de google keep.</p>
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+<h2>🚀 Demo</h2>
 
-## Customize configuration
+[https://ns-google-keep.netlify.app/](https://ns-google-keep.netlify.app/)
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+<h2>Project Screenshots:</h2>
 
-## Project Setup
+<img src="" alt="project-screenshot" width="400" height="400/">
 
-```sh
+  
+  
+<h2>🧐 Features</h2>
+
+Here're some of the project's best features:
+
+*   Authentification(Login & Register)
+*   Ajout-Modification-Suppression d'une note
+*   Déconnexion
+
+<h2>🛠️ Installation Steps:</h2>
+
+<p>1. Se connecter à son compte supabase</p>
+
+<p>2. Enregistrer la clé de connexion dans une variable d'environnement</p>
+
+<p>3. Enregistrement l'url de la base de données dans une variable d'environnement</p>
+
+<p>4. Récupérer le repo</p>
+
+```
+git clone https://github.com/nsWilfried/Google-keep-clone
+```
+
+<p>5. Installer les dépendances</p>
+
+```
 npm install
 ```
 
-### Compile and Hot-Reload for Development
+<p>6. Lancer le projet</p>
 
-```sh
-npm run dev
+```
+npm run dev 
 ```
 
-### Compile and Minify for Production
+  
+  
+<h2>💻 Built with</h2>
 
-```sh
-npm run build
-```
+Technologies used in the project:
+
+*   VueJs
+*   Supabase
+
+<h2>🛡️ License:</h2>
+
+This project is licensed under the MIT
