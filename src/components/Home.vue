@@ -56,13 +56,24 @@
         </div>
 
         <div class="w-full mt-4 h-auto flex justify-between gap-2 flex-wrap bg-violet- p-3">
-          <div class="" v-for="(item, index) in data" :key="index">
+          <div v-bind:class="{ 'cursor': user && user.currentSession.user.id == item.user_id }" v-for="(item, index) in data" :key="index">
             <!-- <div v-if="user && user.currentSession.user.id == item.user_id">
               <button @click="showUpdateAlert(item)">Modifier</button>
             </div> -->
             <va-card style="gap: 30px">
               <div v-if="item.title == '' && item.task == ''">
-                <va-card-title>Empty note</va-card-title>
+                <va-card-title>Empty note
+                  <div  @click="showUpdateAlert(item)"  class="cursor flex  justify-end absolute right-5 "
+                  v-if="user && user.currentSession.user.id == item.user_id">
+                  <va-icon  name="edit_square" size="small" />
+                </div>
+                <div @click="showUpdateAlert(item)" class="flex justify-end absolute right-5 "
+                  v-if="user && user.currentSession.user.id == item.user_id">
+                  <va-icon name="edit_square" size="small" />
+                </div>
+                </va-card-title>
+
+                
               </div>
 
               <div v-else>
@@ -96,7 +107,9 @@
 .random {
   width: 700px;
 }
-
+.cursor:hover {
+  cursor: pointer ;
+}
 @media only screen and(min-width:600px) {
   .random {
     width: 100px;
@@ -242,7 +255,7 @@ export default {
 
     // show update alert 
     async showUpdateAlert(element) {
-      console.log("je suis lelement", element)
+      // console.log("je suis lelement", element)
       await this.$swal.fire({
         title: "Modifier la note",
         html:
